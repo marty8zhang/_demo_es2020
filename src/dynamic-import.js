@@ -7,6 +7,8 @@ testDynamicImport('static `import`')
 /*
  * Dynamic `import()` results in a `Promise` resolving with the content exported by the loaded module.
  * Notes:
+ *   - Use dynamic imports only when necessary. The static form is preferable for loading initial dependencies,
+ *     and can benefit more readily from static analysis tools and tree shaking.
  *   - `import()` supports both relative and absolute paths.
  *   - A relative path must start with `./`.
  *   - The file suffix, such as `.js`, isn't necessary.
