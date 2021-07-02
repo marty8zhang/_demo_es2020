@@ -21,3 +21,5 @@ console.log(object.c1?.c2) // undefined.
 console.log(object.nonExistingMethod?.()) // undefined.
 
 // console.log(nonExistingObject?.test) // ReferenceError.
+let existingObject
+console.log(existingObject?.test) // undefined.
