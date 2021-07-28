@@ -26,6 +26,26 @@ Promise.allSettled(promisesAllResolved).then(() => {
 })
 
 // Note: A "settled" `Promise` means it has either been resolved or rejected.
-Promise.allSettled(promisesWithRejection).then(() => {
+Promise.allSettled(promisesWithRejection).then((results) => {
   console.log('`promisesWithRejection` have been settled.')
+  /*
+   * Output:
+      [
+        { status: 'fulfilled', value: 'Promise One resolved.' },
+        {
+          status: 'rejected',
+          reason: Error: Promise Two rejected!
+              {error stack...}
+        },
+        { status: 'fulfilled', value: 'Promise Three resolved.' }
+      ]
+   */
+  console.log(results)
+
+  const successfulResults = results.filter(
+    (result) => result.status === 'fulfilled',
+  )
+    .map((result) => result.value)
+  // Output: [ 'Promise One resolved.', 'Promise Three resolved.' ].
+  console.log(successfulResults)
 })
